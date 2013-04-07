@@ -421,6 +421,14 @@ margin:20px 0 0 40px;
 	height:140px;
 	width:160px;
 }
+#hourflow{
+	background:#3BC3F5;
+	position:absolute;
+	bottom:0;
+	left:0;
+	height:140px;
+	width:10px;
+}
 #hourPool{
 	background-image:url('../img/hourPool.png');
 	border-top:2px solid #3BC3F5;

@@ -22,16 +22,21 @@
 		<script src="js/jquery.timer.js"></script>
 </head>
 <body>
-
+<div style="display:none"><img src="img/secHolderAni.png"/><img src="img/secHolderAni.png"/><img src="img/minutesFlow.png"/></div>
     <section id="container">
 		<div id="appmain">
 			<div id="seconddrop" sec="0"></div>
 			<div id="secondholder"></div>
 			<div id="minuteholder"></div>
 			<div id="minuteflow"></div>
+			<div id="hourflow"></div>
 			<div id="hourPool"></div>
 			<audio preload="auto" id="drop">
 			<source src="img/drop.wav" type="audio/mpeg" >
+			Your browser does not support the audio tag.
+			</audio>
+			<audio preload="auto" id="flow">
+			<source src="img/flow.mp3" type="audio/mpeg" >
 			Your browser does not support the audio tag.
 			</audio>
 		</div>
@@ -64,6 +69,8 @@
 		var sec = 0;
 		var audio = document.getElementsByTagName('audio')[0];
 		var audioPlay = true;
+		var audio2 = document.getElementsByTagName('audio')[1];
+		var audioPlay2 = true;
 		var added = false;
 		//var msec = 0;
         if ("standalone" in window.navigator) {
@@ -144,6 +151,12 @@
 		function secChange(){
 			sec = getSec();
 			$("#secondholder").css('background-position',('-'+180*sec)+'px 0');
+			if(audioPlay2 && sec==59){
+				audio2.play();
+			}
+			else if(audioPlay2 && (sec==0 || sec==1)){
+				audio2.pause();
+			}
 		}
 		
 		function msecChange(){
@@ -182,6 +195,14 @@
 			}
 			else{
 				audioPlay = true;
+			}
+		});
+		$("#minuteholder").click(function(){
+			if(audioPlay2 != false){
+				audioPlay2 = false;
+			}
+			else{
+				audioPlay2 = true;
 			}
 		});
 		
